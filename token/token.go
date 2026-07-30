@@ -43,7 +43,7 @@ const (
 	RETURN   = "RETURN"
 )
 
-type TokenType struct {
+type Token struct {
 	Type    TokenType
 	Literal string
 }
