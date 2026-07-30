@@ -1,0 +1,11 @@
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+# Test binary built by `go test -c`
+*.test
+# Output of `go tool cover`
+*.out
+# The compiled binary if you build one
+/berries
