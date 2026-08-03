@@ -62,6 +62,10 @@ func (p *Parser) parseLetStatement() *ast.LetStatement {
 
 	stmt.Name = &ast.Identifier{Token: p.curToken, Value: p.curToken.Literal}
 
+	if !p.expectPeek(token.ASSIGN) {
+		return nil
+	}
+
 	// Skip when we encounter ";"
 	for !p.curTokenIs(token.SEMICOLON) {
 		p.nextToken()
@@ -83,6 +87,7 @@ func (p *Parser) expectPeek(t token.TokenType) bool {
 		p.nextToken()
 		return true
 	} else {
+		p.peekError(t)
 		return false
 	}
 }
