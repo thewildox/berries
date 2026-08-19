@@ -8,15 +8,17 @@ import (
 	"io"
 )
 
-const PROMPT = ">>"
-
 func Start(in io.Reader, out io.Writer) {
 	scanner := bufio.NewScanner(in)
 
+	PrintBanner(out)
+
 	for {
-		fmt.Fprintf(out, PROMPT)
-		scanned := scanner.Scan()
-		if !scanned {
+		fmt.Fprint(out, Prompt())
+		if !scanner.Scan() {
+			if err := scanner.Err(); err != nil {
+				fmt.Fprintf(out, "error reading input: %s\n", err)
+			}
 			return
 		}
 
@@ -35,6 +37,8 @@ func Start(in io.Reader, out io.Writer) {
 }
 
 func printParserErrors(out io.Writer, errors []string) {
+	io.WriteString(out, "Woops! We dropped some berries here!\n")
+	io.WriteString(out, " parser errors:\n")
 	for _, msg := range errors {
 		io.WriteString(out, "\t"+msg+"\n")
 	}
