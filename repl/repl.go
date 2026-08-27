@@ -3,6 +3,7 @@ package repl
 import (
 	"berries/evaluator"
 	"berries/lexer"
+	"berries/object"
 	"berries/parser"
 	"bufio"
 	"fmt"
@@ -11,6 +12,7 @@ import (
 
 func Start(in io.Reader, out io.Writer) {
 	scanner := bufio.NewScanner(in)
+	env := object.NewEnvironment()
 
 	PrintBanner(out)
 
@@ -32,7 +34,8 @@ func Start(in io.Reader, out io.Writer) {
 			printParserErrors(out, p.Errors())
 			continue
 		}
-		evaluated := evaluator.Eval(program)
+
+		evaluated := evaluator.Eval(program, env)
 		if evaluated != nil {
 			io.WriteString(out, evaluated.Inspect())
 			io.WriteString(out, "\n")
