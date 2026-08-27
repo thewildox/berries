@@ -14,7 +14,7 @@
 
 ---
 
-**berries** is an interpreted programming language being built from scratch in Go — lexer, Pratt parser, AST, and evaluator, all handwritten, no parser generators. The long-term goal is a small, pleasant language for **financial computation**: money that never touches floating point, first-class rates and percentages, and built-ins for the math finance people actually do (interest, amortization, NPV, IRR).
+**berries** is an interpreted programming language being built from scratch in Go: lexer, Pratt parser, AST, and evaluator, all handwritten, no parser generators. The long-term goal is a small, pleasant language for **financial computation**: money that never touches floating point, first-class rates and percentages, and built-ins for the math finance people actually do (interest, amortization, NPV, IRR).
 
 It's early days. Right now berries is a solid general-purpose interpreter core; the financial layer comes next.
 
@@ -106,16 +106,16 @@ berries is a classic tree-walking interpreter, built in clearly separated stages
 source ──▶ lexer ──▶ tokens ──▶ parser ──▶ AST ──▶ evaluator ──▶ objects
 ```
 
-| Package      | What it does                                                    |
-| ------------ | --------------------------------------------------------------- |
-| `token`      | Token types the lexer emits                                     |
-| `lexer`      | Turns raw source into a token stream                            |
-| `ast`        | Node types for every statement and expression                   |
-| `parser`     | Pratt (top-down operator precedence) parser building the AST    |
-| `object`     | The runtime value system — integers, booleans, null, returns    |
-| `evaluator`  | Walks the AST and computes results                              |
-| `repl`       | The interactive read–eval–print loop, banner included           |
+| Package     | What it does                                                 |
+| ----------- | ------------------------------------------------------------ |
+| `token`     | Token types the lexer emits                                  |
+| `lexer`     | Turns raw source into a token stream                         |
+| `ast`       | Node types for every statement and expression                |
+| `parser`    | Pratt (top-down operator precedence) parser building the AST |
+| `object`    | The runtime value system: integers, booleans, null, returns  |
+| `evaluator` | Walks the AST and computes results                           |
+| `repl`      | The interactive read–eval–print loop, banner included        |
 
 ## Acknowledgments
 
-The interpreter core follows the approach of Thorsten Ball's *Writing An Interpreter In Go* — berries starts from that foundation and grows toward finance.
+The interpreter core follows the approach of Thorsten Ball's *Writing An Interpreter In Go*; berries starts from that foundation and grows toward financial computation.
