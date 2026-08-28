@@ -80,12 +80,12 @@ The interpreter is being grown feature by feature, each with tests.
 
 **Parsed, not yet evaluated**
 
-- [ ] `let` bindings and identifiers
-- [ ] Function literals and call expressions
+- [x] `let` bindings and identifiers
+- [x] Function literals and call expressions
 
 **Up next**
 
-- [ ] Environments, bindings, and closures
+- [x] Environments, bindings, and closures
 - [ ] Proper error objects and messages
 - [ ] Strings, arrays, and hashes
 - [ ] Built-in functions
