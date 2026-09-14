@@ -47,7 +47,7 @@ type Function struct {
 type String struct {
 	Value string
 }
-type BuiltinFunction func(args ...Object) ObjectType
+type BuiltinFunction func(args ...Object) Object
 
 type Builtin struct {
 	Fn BuiltinFunction
